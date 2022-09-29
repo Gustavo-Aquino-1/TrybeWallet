@@ -49,6 +49,7 @@ class WalletForm extends Component {
           value={ value }
           name="value"
           onChange={ (e) => this.handleChange(e) }
+          placeholder="Value"
         />
 
         <input
