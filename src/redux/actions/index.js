@@ -6,6 +6,7 @@ export const GET_EMAIL = 'GET_EMAIl';
 export const GET_COINS = 'GET_COINS';
 export const GET_EXCHANGES_RATES = 'GET_EXCHANGES_RATES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const actionGetEmail = (email) => ({
   type: GET_EMAIL,
@@ -15,6 +16,11 @@ export const actionGetEmail = (email) => ({
 const actionGetCoins = (coins) => ({
   type: GET_COINS,
   payload: Object.keys(coins).filter((e) => e !== 'USDT'),
+});
+
+export const actionRemoveExpense = (element) => ({
+  type: REMOVE_EXPENSE,
+  payload: element.id,
 });
 
 const actionAddExpense = (expense, exchanges) => ({
