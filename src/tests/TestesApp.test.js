@@ -44,8 +44,31 @@ describe('Testes do projeto trybeWallet', () => {
     userEvent.type(inputValue, '1');
     userEvent.click(btn);
 
-    const valueAtt = await screen.findByText('5.40');
+    const valueAtt = await screen.findByTestId('total-field');
 
     expect(valueAtt).toBeInTheDocument();
+    expect(valueAtt).toHaveTextContent('0.00');
+  });
+
+  it('Verifica se é possível adicionar e remover uma expense', async () => {
+    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
+
+    const inputText = screen.getByRole('textbox');
+    const btn = screen.getByRole('button', {
+      name: /adicionar despesa/i,
+    });
+    const inputValue = screen.getByPlaceholderText(/value/i);
+
+    userEvent.type(inputText, '5 Dólares');
+    userEvent.type(inputValue, '5');
+    userEvent.click(btn);
+
+    const buttonRemove = await screen.findAllByTestId('delete-btn');
+
+    expect(buttonRemove[0]).toBeInTheDocument();
+
+    userEvent.click(buttonRemove[0]);
+
+    expect(buttonRemove[0]).not.toBeInTheDocument();
   });
 });
