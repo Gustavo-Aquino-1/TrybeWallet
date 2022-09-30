@@ -7,6 +7,8 @@ export const GET_COINS = 'GET_COINS';
 export const GET_EXCHANGES_RATES = 'GET_EXCHANGES_RATES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const EDITOR_ACTIVE = 'EDITOR_ACTIVE';
 
 export const actionGetEmail = (email) => ({
   type: GET_EMAIL,
@@ -29,6 +31,16 @@ const actionAddExpense = (expense, exchanges) => ({
     ...expense,
     exchangeRates: exchanges,
   },
+});
+
+export const actionActiveEditor = (id) => ({
+  type: EDITOR_ACTIVE,
+  id,
+});
+
+export const actionEditExpense = (expensesAtt) => ({
+  type: EDIT_EXPENSE,
+  payload: expensesAtt,
 });
 
 export function fetchApi() {

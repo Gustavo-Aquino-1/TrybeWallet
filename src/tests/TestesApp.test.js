@@ -71,4 +71,39 @@ describe('Testes do projeto trybeWallet', () => {
 
     expect(buttonRemove[0]).not.toBeInTheDocument();
   });
+
+  it('Verifica se é possível editar uma expense', async () => {
+    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
+
+    const inputText = screen.getByRole('textbox');
+    const btn = screen.getByRole('button', {
+      name: /adicionar despesa/i,
+    });
+    const inputValue = screen.getByPlaceholderText(/value/i);
+
+    userEvent.type(inputText, '5 Dólares');
+    userEvent.type(inputValue, '5');
+    userEvent.click(btn);
+
+    const buttonEdit = await screen.findAllByTestId('edit-btn');
+
+    expect(buttonEdit[0]).toBeInTheDocument();
+
+    userEvent.click(buttonEdit[0]);
+
+    const buttonEditExpense = await screen.findByRole('button', {
+      name: 'Editar Despesa',
+    });
+
+    expect(buttonEditExpense).toBeInTheDocument();
+
+    userEvent.type(inputValue, '1');
+    userEvent.type(inputText, '1 dólar');
+
+    userEvent.click(buttonEditExpense);
+
+    const dolar1 = await screen.findByText('1 dólar');
+
+    expect(dolar1).toBeInTheDocument();
+  });
 });

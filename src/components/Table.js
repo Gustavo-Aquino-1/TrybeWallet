@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { actionRemoveExpense } from '../redux/actions';
+import { actionRemoveExpense, actionActiveEditor } from '../redux/actions';
 
 class Table extends Component {
   calculaValor = (ask) => {
@@ -14,9 +14,14 @@ class Table extends Component {
     return Number(result).toFixed(2);
   };
 
+  handleEditor = (expense) => {
+    const idEdit = expense.id;
+    const { activeEditor } = this.props;
+    activeEditor(idEdit);
+  };
+
   render() {
-    const { expenses } = this.props;
-    const { removeExpense } = this.props;
+    const { expenses, removeExpense } = this.props;
     return (
       <table>
         <thead>
@@ -54,6 +59,14 @@ class Table extends Component {
                   >
                     Remover
                   </button>
+
+                  <button
+                    type="button"
+                    data-testid="edit-btn"
+                    onClick={ () => this.handleEditor(e) }
+                  >
+                    Editar
+                  </button>
                 </td>
               </tr>
             ))
@@ -71,11 +84,13 @@ const mapStateToProps = ({ wallet }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeExpense: (expense) => dispatch(actionRemoveExpense(expense)),
+  activeEditor: (id) => dispatch(actionActiveEditor(id)),
 });
 
 Table.propTypes = {
   expenses: PropTypes.instanceOf(Array).isRequired,
   removeExpense: PropTypes.func.isRequired,
+  activeEditor: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
