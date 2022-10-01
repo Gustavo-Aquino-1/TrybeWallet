@@ -20,9 +20,9 @@ const actionGetCoins = (coins) => ({
   payload: Object.keys(coins).filter((e) => e !== 'USDT'),
 });
 
-export const actionRemoveExpense = (element) => ({
+export const actionRemoveExpense = (id) => ({
   type: REMOVE_EXPENSE,
-  payload: element.id,
+  payload: id,
 });
 
 const actionAddExpense = (expense, exchanges) => ({

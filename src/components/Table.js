@@ -39,7 +39,6 @@ class Table extends Component {
         </thead>
 
         <tbody>
-          {/* <tr> */}
           {
             expenses.map((e, index) => (
               <tr key={ index }>
@@ -54,24 +53,23 @@ class Table extends Component {
                 <td>
                   <button
                     type="button"
-                    data-testid="delete-btn"
-                    onClick={ () => removeExpense(e) }
-                  >
-                    Remover
-                  </button>
-
-                  <button
-                    type="button"
                     data-testid="edit-btn"
                     onClick={ () => this.handleEditor(e) }
                   >
                     Editar
                   </button>
+
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    onClick={ () => removeExpense(e.id) }
+                  >
+                    Excluir
+                  </button>
                 </td>
               </tr>
             ))
           }
-          {/* </tr> */}
         </tbody>
       </table>
     );
