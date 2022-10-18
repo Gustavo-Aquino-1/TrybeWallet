@@ -1,8 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { fetchApi, fetchAndAddExpense, actionEditExpense,
   actionActiveEditor } from '../redux/actions';
+
+const FormArea = styled.div`
+  margin-bottom: 80px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  input, select  {
+    padding: 14px 5px;
+    width: 10%;
+    outline: none;
+    border: none;
+    background-color: rgba(197, 214, 232, 0.36);
+    border-bottom: 2px solid royalblue;
+    font-weight: 500;
+  }
+
+  input::placeholder {
+    color: rgba(0, 0, 0, 0.74);
+  }
+
+  button {
+    padding: 15px 2px;
+    width: 12%;
+    background-color: royalblue;
+    color: white;
+    font-weight: 800;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
 
 class WalletForm extends Component {
   state = {
@@ -80,7 +118,7 @@ class WalletForm extends Component {
     const { description, value, currency, method, tag } = this.state;
     const { currencies, editor } = this.props;
     return (
-      <div>
+      <FormArea>
         <input
           type="number"
           data-testid="value-input"
@@ -96,6 +134,7 @@ class WalletForm extends Component {
           value={ description }
           name="description"
           onChange={ (e) => this.handleChange(e) }
+          placeholder="Descrição"
         />
 
         <select
@@ -151,7 +190,7 @@ class WalletForm extends Component {
           )
         }
 
-      </div>
+      </FormArea>
     );
   }
 }

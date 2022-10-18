@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { ImProfile } from 'react-icons/im';
 import { actionGetEmail } from '../redux/actions';
+import LoginArea from '../styles/styleLogin';
 
 class Login extends React.Component {
   state = {
@@ -22,31 +24,42 @@ class Login extends React.Component {
     const minLength = 6;
     const cond = (regExpEmail.test(email) && password.length >= minLength);
     return (
-      <div>
-        <input
-          type="email"
-          data-testid="email-input"
-          value={ email }
-          placeholder="Email"
-          onChange={ ({ target: { value } }) => this.setState({ email: value }) }
-        />
+      <LoginArea>
+        <div>
+          <p>.</p>
+          <section>
+            <article>
+              <h2>Welcome To TrybeWallet</h2>
+            </article>
+            <div className="loginArea">
+              <span><ImProfile /></span>
+              <input
+                type="email"
+                data-testid="email-input"
+                value={ email }
+                placeholder="Email"
+                onChange={ ({ target: { value } }) => this.setState({ email: value }) }
+              />
 
-        <input
-          type="password"
-          data-testid="password-input"
-          placeholder="Password"
-          value={ password }
-          onChange={ ({ target: { value } }) => this.setState({ password: value }) }
-        />
+              <input
+                type="password"
+                data-testid="password-input"
+                placeholder="Password"
+                value={ password }
+                onChange={ ({ target: { value } }) => this.setState({ password: value }) }
+              />
 
-        <button
-          type="button"
-          disabled={ !cond }
-          onClick={ () => this.handleClick(email) }
-        >
-          Entrar
-        </button>
-      </div>
+              <button
+                type="button"
+                disabled={ !cond }
+                onClick={ () => this.handleClick(email) }
+              >
+                Sing in
+              </button>
+            </div>
+          </section>
+        </div>
+      </LoginArea>
     );
   }
 }
