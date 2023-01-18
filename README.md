@@ -31,4 +31,3 @@ Nesse site você poderá guardar as suas finanças, e ter um controle dos seus g
   </ul>
  </details>
  
- Acesse já o site com o link a seguir: https://rick-and-morty-henna-nine.vercel.app/
