@@ -27,7 +27,7 @@ Nesse site você poderá guardar as suas finanças, e ter um controle dos seus g
     <li> React </li>
     <li> Redux </li>
     <li> Styled-components </li>
-    <li> RTL </li>
+    <li>RTL</li>
   </ul>
  </details>
  
