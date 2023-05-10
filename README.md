@@ -1,4 +1,4 @@
-## TrybeWallet 💸
+## MyWallet 💸
 
 Nesse site você poderá guardar as suas finanças, e ter um controle dos seus gastos, e quando você fizer aquela comprinha internacional, não se preocupe em converter o valor para outro moeda, o próprio site fará isso por você !!
 
